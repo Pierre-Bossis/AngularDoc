@@ -1,0 +1,34 @@
+<h2>Exos 1 : le panier de course V1</h2>
+
+<div class="text-center">
+    <button (click)="afficher()" *ngIf="!onlyCard" class="green btn">Panier seulement</button>
+    <button (click)="afficher()" *ngIf="onlyCard" class="orange btn">Panier + Ajout</button>
+</div>
+<div class="row">
+    
+    <div *ngIf="!onlyCard" class="col s4">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Système d'ajout</span>
+                <label>Article :</label>
+                <input [(ngModel)]="article" type="text">
+                <label>Nombre :</label>
+                <input type="number" [(ngModel)]="nombre"  min="1" max="5">
+                <button (click)="ajoutPanier(article,nombre)" *ngIf="article != '' && nombre > 0;" class="btn large m2">Ajouter</button>
+            </div>
+        </div>
+    </div>
+    <div [ngClass]="onlyCard ? 'col s12' : 'col s8'">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">Liste des courses</span>
+                <ul *ngFor="let articles of panier;let i = index">
+                    <li>
+                        {{articles.nombre}} x {{articles.article}} ajouté le : {{articles.date | date:'dd/MM/yyyy hh:mm:ss'}} - Traduction pour mamy : {{articles.nombre | numberName}}
+                        &nbsp;&nbsp;<button (click)="supprimerDuPanier(i)" class="red btn">Supprimer</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

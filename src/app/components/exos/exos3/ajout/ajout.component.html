@@ -1,0 +1,10 @@
+<div class="card blue-grey darken-1">
+    <div class="card-content white-text">
+        <span class="card-title">Système d'ajout</span>
+        <label>Article :</label>
+        <input [(ngModel)]="article" type="text">
+        <label>Nombre :</label>
+        <input type="number" [(ngModel)]="nombre"  min="1" max="5">
+        <button (click)="ajoutPanier(article,nombre)" *ngIf="article != '' && nombre > 0;" class="btn large m2">Ajouter</button>
+    </div>
+</div>

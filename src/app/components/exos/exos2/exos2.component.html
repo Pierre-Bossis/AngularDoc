@@ -1,0 +1,37 @@
+<h2>Exos 2.0 : Liste d'articles</h2>
+
+<div class="row">
+  <div class="col s12">
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+        <table class="striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Prix TVAC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let article of listeArticles;let i = index"
+              Underline
+              (click)="openPanel(i)"
+              class="dropdown-trigger" data-target="dropdown_details">
+              <td>{{ article.nom }}</td>
+              <td>{{ article.prixHTVA | toTVAC }}€</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ul id="dropdown_details" class="dropdown-content">
+    <li>Id : {{listeArticles[index].id}}</li>
+    <li>Nom : {{ listeArticles[index].nom }}</li>
+    <li>Prix HTVA : {{ listeArticles[index].prixHTVA }}€</li>
+    <li>Prix TVA : {{ listeArticles[index].prixHTVA | toTVAC }}€</li>
+    <li>Catégorie : {{listeArticles[index].categorie}}</li>
+    <li>Descriptif : {{listeArticles[index].descriptif}}</li>
+</ul>
